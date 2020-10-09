@@ -1,0 +1,24 @@
+{
+  "name": "learning-zone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neferio/Learning-zone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neferio/Learning-zone/issues"
+  },
+  "homepage": "https://github.com/neferio/Learning-zone#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}
