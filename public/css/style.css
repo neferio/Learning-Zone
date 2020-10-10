@@ -54,6 +54,25 @@
   color: white;
 }
 
+.section1 .extra {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 50px;
+}
+
+.section1 .extra .login, .section1 .extra .about {
+  margin-right: 20px;
+}
+
+.section1 .extra .login h3, .section1 .extra .about h3 {
+  color: white;
+  letter-spacing: 1px;
+}
+
 .section2 {
   position: relative;
   background-size: cover;

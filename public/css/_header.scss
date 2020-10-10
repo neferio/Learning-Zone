@@ -47,5 +47,19 @@
         
     }
 
+    .extra{
+        display: flex;
+        justify-content: space-between;
+        padding:50px;
+
+        .login,.about {
+            margin-right: 20px;
+            h3{
+                color:white;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
     
 }

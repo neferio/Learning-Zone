@@ -1,0 +1,203 @@
+.section1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #101113;
+}
+
+.section1 .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+}
+
+.section1 .header .logo {
+  margin-left: 30px;
+}
+
+.section1 .header .name {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 30px;
+}
+
+.section1 .header .name h1 {
+  color: whitesmoke;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.section1 .header2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px;
+  padding: 10px;
+  margin-right: 60px;
+  border: 1px white solid;
+}
+
+.section1 .header2 .join a {
+  text-decoration: none;
+  color: white;
+}
+
+.section1 .extra {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 50px;
+}
+
+.section1 .extra .login, .section1 .extra .about {
+  margin-right: 20px;
+}
+
+.section1 .extra .login h3, .section1 .extra .about h3 {
+  color: white;
+  letter-spacing: 1px;
+}
+
+.section2 {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.section2 .body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px white solid;
+  width: 900px;
+  height: 500px;
+  border-radius: 12px;
+}
+
+.section2 .body .part1 {
+  border-right: 1px white solid;
+  width: 550px;
+  background-color: white;
+  border-radius: 12px;
+  border-right-style: none;
+}
+
+.section2 .body .part1 .part1-head {
+  padding: 33px 32px 20px 0px;
+  margin-left: 45px;
+  margin-right: 75px;
+  font-weight: 300;
+  border-bottom: 0.25px solid grey;
+}
+
+.section2 .body .part1 .part1-head h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  color: #353535;
+}
+
+.section2 .body .part1 .part1-form {
+  padding: 33px 32px 20px 0px;
+  margin-left: 45px;
+  margin-right: 85px;
+}
+
+.section2 .body .part1 .part1-form form {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+.section2 .body .part1 .part1-form form .username, .section2 .body .part1 .part1-form form .email, .section2 .body .part1 .part1-form form .password {
+  margin-bottom: 8px;
+}
+
+.section2 .body .part1 .part1-form form .name-form, .section2 .body .part1 .part1-form form .email-form, .section2 .body .part1 .part1-form form .pass-form {
+  width: 100%;
+  height: 29px;
+  margin-bottom: 14px;
+}
+
+.section2 .body .part1 .part1-form form .policy {
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
+
+.section2 .body .part1 .part1-form form .policy label {
+  color: #3ecaca;
+}
+
+.section2 .body .part1 .part1-form form .signup-button input {
+  padding: 12px 30px 12px 30px;
+  border-radius: 14px;
+  color: white;
+  letter-spacing: 1px;
+  background-color: #3a3d40;
+}
+
+.section2 .body .part2 {
+  width: 350px;
+  background-image: url("../img/pic1.jpg");
+  border-radius: 12px;
+}
+
+.section2 .body .part2 .overlay {
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  border-radius: 12px;
+  background: #212121;
+}
+
+.section2 .body .part2 .overlay .inner {
+  padding: 32px;
+}
+
+.section2 .body .part2 .overlay .inner .part2-head {
+  line-height: 28px;
+  margin-bottom: 50px;
+  word-spacing: 8px;
+  margin-top: 50px;
+  color: white;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.section2 .body .part2 .overlay .inner .part2-para {
+  color: white;
+  font-weight: 400;
+  text-align: justify;
+  letter-spacing: 1px;
+  line-height: 25px;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #101113;
+}
+/*# sourceMappingURL=signup.css.map */
