@@ -25,10 +25,11 @@
                 font-weight: 300;
                 border-bottom: 0.25px solid grey;
                 h2{
+                    a{
                     font-family: Arial, Helvetica, sans-serif;
                     letter-spacing: 1px;
                     color:#353535;
-                    
+                    }
 
                 }
             }
@@ -40,6 +41,13 @@
                 form{
                     font-family: Arial, Helvetica, sans-serif;
                     letter-spacing: 1px;
+                    .ex{
+                        display:flex;
+                        #message1{
+                            margin-left: 18px;
+                            margin-top: 7px;
+                        }
+                    }
                     .username, .email ,.password{
                         margin-bottom: 8px;
                     }

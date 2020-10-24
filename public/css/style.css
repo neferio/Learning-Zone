@@ -73,6 +73,12 @@
   letter-spacing: 1px;
 }
 
+.section1 .extra .login h3 a, .section1 .extra .about h3 a {
+  color: white;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
 .section2 {
   position: relative;
   background-size: cover;

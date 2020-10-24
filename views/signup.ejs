@@ -20,7 +20,7 @@
 
         <div class="extra">
             <div class="login">
-                <h3>Login</h3>
+                <h3><a href="/">Login</a></h3>
             </div>
             <div class="about">
                 <h3>About</h3>
@@ -38,21 +38,22 @@
                 </div>
 
                 <div class="part1-form">
-                    <form action="/signup" >
+                    <form action="/signup" method="POST" >
                         <div class="username"><h3>Username</h3></div>
-                        <input type="text" name="username" class="name-form"  placeholder="Enter your Username">
-
+                        <div class="ex">
+                        <input type="text" name="username" class="name-form"  placeholder="Enter your Username" id="fname" required> <p id="message1"></p>
+                        </div>
                         <div class="email"><h3>Email</h3></div>
-                        <input type="text" class="email-form" name="email" placeholder="Enter your Email id">
+                        <input  type="email" class="email-form" name="email" placeholder="Enter your Email id" required>
 
                         <div class="password"><h3>Password</h3></div>
-                        <input type="text" class="pass-form" name="password" placeholder="Enter your Passoword">
+                        <input type="password" class="pass-form" name="password" placeholder="Enter your Passoword" required>
 
                         <div class="policy">
                             <h5>By signing up. I agree to the <label class="co">Terms</label> & <label class="co">Policy</label> </h5>
                         </div>
 
-                        <div class="signup-button"><input type="submit" value="sign up"></div>
+                        <div class="signup-button"><input type="submit" value="sign up" id="signup"></div>
                         
 
                         
@@ -80,4 +81,49 @@
         </div>
     </div>
 </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+         $(document).ready(function(){
+            $('#signup').attr('disabled', 'disabled');
+                $("#fname").keyup(function(){
+                    //$("#fname").css("background-color", "yellow");
+                    var data1=$(this).val();
+                    
+                    
+                    console.log(data1);
+                        $.ajax({    //create an ajax request to display.php
+                                type: "GET",
+                                url: "/ajax",             
+                                dataType: "text", 
+                                data:data1, //expect html to be returned                
+                                success: function(response){                    
+                                    // $("#responsecontainer").html(response); 
+                                    //alert(response);
+                                    console.log(response);
+                                    if(response=="Not Available"){
+                                    $('#message1').text(response);
+                                    $('#message1').css("color","red");
+                                    $('#signup').attr('disabled', 'disabled');
+                                    }
+                                    else if(response=="Available"){
+                                        $('#message1').text(response);
+                                        $('#message1').css("color","green"); 
+                                        $('#signup').removeAttr('disabled');
+                                    }
+                                    else{
+                                        $('#message1').text(response);
+                                        $('#signup').attr('disabled', 'disabled');
+                                    }
+                                }
+
+                            })
+                    
+                    
+                });
+                
+                
+            });
+    </script>
+
 </html>

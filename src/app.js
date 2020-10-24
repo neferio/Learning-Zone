@@ -27,7 +27,10 @@ app.get('/signup',(req,res)=>{
 
 
 
+const router=require('./router/route')
 
+
+app.use(router)
 
 
 
