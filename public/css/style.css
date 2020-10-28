@@ -30,7 +30,11 @@
   margin-left: 30px;
 }
 
-.section1 .header .name h1 {
+.section1 .header .name a {
+  text-decoration: none;
+}
+
+.section1 .header .name a h1 {
   color: whitesmoke;
   letter-spacing: 1px;
   font-family: Arial, Helvetica, sans-serif;

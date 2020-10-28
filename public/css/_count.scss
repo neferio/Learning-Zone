@@ -1,0 +1,98 @@
+.count{
+    background-image: url("../img/desk1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+    width: auto;
+    height:auto;
+    .count_black{
+        background-color: rgba(41, 41, 41, 0.65);
+        width:auto;
+        height:auto;
+       
+        padding-top: 80px;
+        padding-bottom: 40px;
+        
+        
+        .extra{
+            display: flex;
+          
+            padding-left: 15px;
+            padding-right: 15px;
+            width:auto;
+                height:auto;
+                //flex-wrap: wrap;
+                justify-content: center;
+                min-width: 215px;
+
+            .part1{
+                padding-left: 15px;
+                padding-right:15px;
+                margin-bottom: 30px;
+                width:264px;
+                height:auto;
+                min-width: 215px;
+                .part_inner
+                {
+                   padding:30px;
+                    width:auto;
+                    height:216px;
+                    border:1px solid rgba(255, 255, 255, 0.2);
+                    .icon{
+                        text-align: center;
+                        .mdi{
+                            font-size: 60px;
+                            
+                            color:#ffb606;
+                        
+                        }
+                    }
+                    .no{
+                        color: #ffffff;
+                        font-size: 45px;
+                        font-weight: 900;
+                        margin-bottom: 5px;
+                        line-height: 1.2;
+                        text-align: center;
+                    }
+                    .name{
+                        color: #ffffff;
+                        font-size: 18px;
+                        text-transform: uppercase;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media only screen and (max-width:850px){
+    .count{
+        .count_black{
+            .extra{
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:600px){
+    .count{
+        .count_black{
+            .extra{
+                .part1{
+                    width:100%;
+                    .part_inner{
+                        .icon{
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

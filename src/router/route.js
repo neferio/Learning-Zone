@@ -52,7 +52,7 @@ router.post('/signup',(req,res)=>{
                   
                 
             });
-            res.redirect('/');
+            res.redirect('/login');
 
         }
         else{

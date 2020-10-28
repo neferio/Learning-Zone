@@ -17,8 +17,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(htmlpath))
 app.set("view engine", "ejs");
 
+
 app.get('/',(req,res)=>{
     res.render("index");
+})
+
+app.get('/login',(req,res)=>{
+   // console.log("hey");
+    res.render("login");
 })
 
 app.get('/signup',(req,res)=>{
