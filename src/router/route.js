@@ -88,13 +88,15 @@ router.post("/login",(req,res)=>{
                 req.flash('username', req.body.name)
 				res.redirect('/profile');
 			} else {
-				res.send('Incorrect Username and/or Password!');
+                res.redirect('/login?valid=0')
+				//res.send('Incorrect Username and/or Password!');
 			}			
 			res.end();
 		});
 	} else {
-		res.send('Please enter Username and Password!');
-		res.end();
+        res.redirect('/login?valid=1')
+		//res.send('Please enter Username and Password!');
+		//res.end();
 	}
 
 

@@ -133,6 +133,11 @@
   margin-top: 8px;
 }
 
+.section2 .inner .form .err p {
+  color: red;
+  text-align: center;
+}
+
 .section2 .inner .form .name {
   padding: 20px;
 }
