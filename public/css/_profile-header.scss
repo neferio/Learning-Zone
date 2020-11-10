@@ -1,0 +1,114 @@
+
+
+.section1{
+   
+
+        .error1{
+            display: flex;
+            /* height: 20px; */
+            position: relative;
+            justify-content: center;
+            p{
+                color:red;
+                font-size:18px;
+                position: absolute;
+            }
+        }
+    //height: 400px;
+    //padding: 5px;
+
+    .section1-box{
+        display: flex;
+        flex-direction: column;
+        .inner_box{
+            height:400px;
+            background-color: #2b2a2a;
+            display: flex;
+            justify-content: space-evenly;
+            padding: 75px;
+            .profile-pic{
+                img{
+                    border-radius: 50%;
+                    height:250px;
+                    width:250px;
+                }
+                
+            }
+
+            .profile-data{
+                padding:35px;
+                .name{
+                    text-transform: capitalize;
+                    color: white;
+                    font-weight: 600;
+                    letter-spacing: 2px;
+                    font-size: 35px;
+                    margin-bottom: 15px;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+                .email{
+                    color: white;
+                    font-weight: 500;
+                    letter-spacing: 3px;
+                    font-size: 25px;
+                    margin-bottom: 25px;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+                .articles{
+                    color: green;
+                    font-weight: 500;
+                    letter-spacing: 3px;
+                    font-size: 25px;
+                    margin-bottom: 25px;
+                }
+                .course{
+                    color: red;
+                    font-weight: 500;
+                    letter-spacing: 3px;
+                    font-size: 25px;
+                    margin-bottom: 25px;
+                }
+            }
+        }
+
+        .priority-set{
+            
+            background-color:#2b2a2a;
+            text-align:center;
+            padding: 30px;
+            .button1{
+                padding: 10px;
+                background-color: lightgrey;
+                width: 250px;
+            }
+        }
+    }
+
+}
+
+
+.logout{
+    position: absolute;
+    top:20px;
+    right:20px;
+    input{
+        padding: 10px;
+        width: 67px;
+        letter-spacing: 1px;
+        background-color: #d2d0d0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+
+.explore-button{
+    position: absolute;
+    top:20px;
+    right:110px;
+    button{
+        padding: 10px;
+        width: 90px;
+        letter-spacing: 1px;
+        background-color: #d2d0d0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}

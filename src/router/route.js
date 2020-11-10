@@ -7,6 +7,11 @@ router.use(bodyParser.urlencoded({ extended: true }));
 var flash = require('connect-flash');
 router.use(flash());
 var session = require('express-session');
+
+
+
+
+
 router.use(session({ cookie: { maxAge: 60000 }, 
     secret: 'woot',
     resave: false, 
@@ -17,14 +22,37 @@ const sql = require("../db/database");
 
 //end points
 router.get('/profile',(req,res)=>{
-    if (req.session.loggedin && req.session.loggedin == "true") {
-		let nameq=req.flash('username');
+    console.log("hyq1")
+    if(req.query.search==0){
+        console.log("hyq2");
+        let nameq=req.session.name;
+        let emailq=req.session.email;
+        
         res.render('profile',{
-            name:nameq
+            name:nameq,
+            email:emailq,
+            error1:"Error select 2 Priorites please",
+            
+
         })
-	} else {
-		res.render('notfound');
-	}
+    }
+    else{
+        if (req.session.loggedin && req.session.loggedin == "true") {
+            let nameq=req.session.name;
+            let emailq=req.session.email;
+            
+            res.render('profile',{
+                name:nameq,
+                email:emailq,
+                error1:""
+    
+            })
+        } else {
+            res.render('notfound');
+        }
+    }
+
+   
     
 })
 // router.post('/book', booking.create);
@@ -85,7 +113,12 @@ router.post("/login",(req,res)=>{
 		sql.query('SELECT * FROM VALID WHERE name = ? AND password = ?', [username, password], function(error, results) {
 			if (results.length > 0) {
                 req.session.loggedin = "true";
+                req.session.name=username;
+                req.session.email=results[0].email;
                 req.flash('username', req.body.name)
+                // req.flash('email',res)
+                req.flash('email', results[0].email)
+               
 				res.redirect('/profile');
 			} else {
                 res.redirect('/login?valid=0')
@@ -105,6 +138,7 @@ router.post("/login",(req,res)=>{
 
 router.post("/logout",(req,res)=>{
     req.session.loggedin = "false";
+    console.log(req.flash('email'))
     console.log("hey");
     res.redirect('/')
 })
@@ -139,6 +173,108 @@ router.get("/ajax",(req,res)=>{
       
 })
 
+router.post("/priority",(req,res)=>{
+    //console.log(req);
+    //let userParams = getUserParams(req.body);
+    console.log(req.body.topic)
+    if(req.body.topic.length==2){
+       // console.log("heyy")
+
+        let pr1=req.body.topic[0];
+        let pr2=req.body.topic[1];
+        var sql11="UPDATE VALID SET pone ='"+ pr1+ "', "+ "ptwo = '"+pr2+"' WHERE name = '"+req.session.name+"'"
+        
+        sql.query(sql11, function (err, result) {
+            if (err) throw err;
+            console.log(result.affectedRows + " record(s) updated");
+        });
+
+
+
+
+        res.redirect('/profile');
+        
+    }
+    else{
+        res.redirect('/profile?search=0');
+    }
+    
+})
+
+
+
+router.get("/recommend",(req,res)=>{
+    let sql11="SELECT * FROM VALID WHERE name='"+req.session.name+"'"
+    let arr=new Array;
+    sql.query(sql11, function (err, result) {
+        if (err) throw err;
+        // console.log(result[0]);
+        // arr.push(result[0].name)
+        // arr.push(result[0].pone)
+        let tag1=result[0].pone;
+        let tag2=result[0].ptwo;
+
+        let sql22="SELECT * FROM `Course-tags` WHERE tag IN ('"+tag1+"','"+tag2+"') AND Course NOT IN (SELECT course FROM `course-student` WHERE student='"+req.session.name+"') LIMIT 3"
+        sql.query(sql22, function (err, result2) {
+            if (err) throw err;
+            // arr.push(result2[0])
+            // var result2 = JSON.stringify(result2);
+            // console.log(result2);
+
+            result2.forEach(element => {
+                arr.push(element);
+
+            });
+            console.log(arr);
+            arr = JSON.stringify(arr);
+            res.send(arr);
+        })
+
+
+
+
+       
+
+    });
+})
+
+
+
+
+router.get("/enrol",(req,res)=>{
+    // let sql11="SELECT * FROM VALID WHERE name='"+req.session.name+"'"
+    // let arr=new Array;
+    // sql.query(sql11, function (err, result) {
+    //     if (err) throw err;
+    //     // console.log(result[0]);
+    //     // arr.push(result[0].name)
+    //     // arr.push(result[0].pone)
+    //     let tag1=result[0].pone;
+    //     let tag2=result[0].ptwo;
+        let arr2=new Array;
+        let sql22="SELECT * FROM `course-student` WHERE student='"+req.session.name+"'";
+        sql.query(sql22, function (err, result2) {
+            if (err) throw err;
+            // arr.push(result2[0])
+            // var result2 = JSON.stringify(result2);
+            // console.log(result2);
+
+            result2.forEach(element => {
+                arr2.push(element);
+
+            });
+            console.log(arr2);
+            arr2 = JSON.stringify(arr2);
+            res.send(arr2);
+        })
+
+
+
+
+       
+
+    // });
+})
 
 
 module.exports=router;
