@@ -8,10 +8,6 @@ var flash = require('connect-flash');
 router.use(flash());
 var session = require('express-session');
 
-
-
-
-
 router.use(session({ cookie: { maxAge: 60000 }, 
     secret: 'woot',
     resave: false, 
