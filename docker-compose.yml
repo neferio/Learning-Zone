@@ -2,10 +2,10 @@ version: "3"
 
 services:
   db:
-    image: meetanshi18/mysql-app
+    image: meetanshi18/mysql-app:v1
     build: ./db
   web:
-    image: meetanshi18/node-app
+    image: meetanshi18/node-app:v1
     build: ./web
     ports:
       -  "3000:3000"
