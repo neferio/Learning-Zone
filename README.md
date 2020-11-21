@@ -1,6 +1,6 @@
 # Learning-zone
 
-## Technology Used
+## Technology Used:
 
 ### Node.js
 ### Expess
