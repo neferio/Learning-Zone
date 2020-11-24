@@ -8,7 +8,7 @@ services:
     image: meetanshi18/node-app:v1
     build: ./web
     ports:
-      -  "3000:3000"
+      -  "4000:4000"
     depends_on:
       -  db
     restart: on-failure
