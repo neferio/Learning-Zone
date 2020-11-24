@@ -25,12 +25,14 @@ beforeAll(() => {
 })
 
 describe('Dummy Tests', () => {
-    it('Dummy Test 1', () => {
+    it('Dummy Test 1', async done => {
         expect(true).toBe(true)
+        done();
     })
 
-    it('Dummy Test 2', () => {
+    it('Dummy Test 2', async done => {
         expect(1+2).toBe(3);
+        done();
     })
 })
 
@@ -141,5 +143,7 @@ describe('Testing database endpoints', () => {
           expect(res.status).toBe(200);
           done();
       })
+
+      
 })
 
