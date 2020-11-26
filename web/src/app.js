@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(htmlpath))
 app.set("view engine", "ejs");
 
+
+
+app.set('views', './web/views');
 app.get('/',(req,res)=>{
     res.render("index");
 })
@@ -26,14 +29,39 @@ app.get('/signup',(req,res)=>{
 })
 
 app.get('/login',(req,res)=>{
-    res.render("login");
-})
+    // console.log("hey");
+   // console.log(req.body)
+   //console.log(req.queryvalid)
+ 
+     if(req.query.valid==0){
+         res.render("login",{
+             "error":"Incorrect Username & Password"
+         });
+     }
+     else if(req.query.valid==1){
+         res.render("login",{
+             "error":"Enter Username & Password"
+         });
+     }
+     else{
+ 
+ 
+         res.render("login",{
+             "error":""
+         });
+     }
+ 
+     // res.render("login",{
+     //     "error":""
+     // });
+ })
 
 
+ const router=require('./router/route')
 
 
-
-
+ app.use(router)
+ 
 
 
 

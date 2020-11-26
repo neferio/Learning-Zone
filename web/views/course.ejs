@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/course.css">
+</head>
+<body>
+    <div class="section1">
+        <div class="logo">
+            <img src="../img/logo.svg">
+            <p>Learning Zone</p>
+        </div>
+    </div>
+
+    <div class="name">
+        <h1><%= cname %></h1>
+        <div class="author">
+            <p>By <%= author %></p>
+        </div>
+    </div>
+   
+    <div class="data">
+        <%= data %>
+    </div>
+
+    <div class="status" id="b3">
+        
+    </div>
+    
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    let data1="<%= cname %>"
+ $(document).ready(function(){
+  
+    let course_name=new Array;
+    let imgname=new Array;
+    
+    //console.log(data1);
+        $.ajax({    //create an ajax request to display.php
+            type: "GET",
+            url: "/enrol-check?course="+data1,             
+            dataType: "text", 
+            //data:data1, //expect html to be returned                
+            success: function(response){                    
+                
+
+               console.log(response);
+               
+               if(response=="-1"){
+                    let but=document.createElement('button');
+                    
+                    but.innerText="Enroll Now"
+                    but.setAttribute("id","enroll")
+                    but.setAttribute("onClick","myfunc1()");
+                    document.getElementById("b3").appendChild(but);
+
+               }
+               else if(response==0){
+
+                    let txt=document.createElement('p');
+                    txt.innerText="Enrolled"
+
+
+                    let but=document.createElement('button');
+                    
+                    but.innerText="Mark as done"
+                    but.setAttribute("id","mark")
+                    document.getElementById("b3").appendChild(txt);
+                    document.getElementById("b3").appendChild(but);
+               }
+
+                //console.log(response[0].Course);
+                
+            }
+
+        })
+
+
+
+
+
+        
+
+
+
+
+    })
+
+
+
+    var myfunc1=()=>{
+        $.ajax({    //create an ajax request to display.php
+            type: "GET",
+            url: "/enrol-now?course="+data1,             
+            dataType: "text", 
+            //data:data1, //expect html to be returned                
+            success: function(response){ 
+                if(response=="yes"){
+                    var list = document.getElementById("enroll")
+                    list.remove();
+                    let txt=document.createElement('p');
+                    txt.innerText="Enrolled"
+
+
+                    let but=document.createElement('button');
+                    
+                    but.innerText="Mark as done"
+                    but.setAttribute("id","mark")
+                    document.getElementById("b3").appendChild(txt);
+                    document.getElementById("b3").appendChild(but);
+                }
+            }
+        })
+    }
+             
+            
+   
+</script>
+
+
+
+
+
+</html>

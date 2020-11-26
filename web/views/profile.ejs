@@ -8,66 +8,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <!-- <div class="section1">
-        <div class="header">
-            <div class="logo">
-                <a href="/"><img src="img/logo.svg"></a>
-            </div>
-            <div class="name">
-                <a href="/"><h1>LearningZone</h1></a>
-            </div>
-            
-        </div>
-
-    </div> -->
-
-
-    <!-- <div class="section2">
-        <div class="profile-pic" id="profile">
-
-        </div>
-        <div class="details">
-            <div class="details_name">
-                <h2><%= name %></h2>
-
-            </div>
-
-            <div class="details_email">
-                <h2><%= email %></h2>
-            </div>
-            
-        </div>
-    </div> -->
-
-
+   
     <div class="section1">
         <div class="error1">
             <p><%= error1 %></p>
         </div>
 
         <div class="section1-box">
-            <div class="inner_box">
-
-                <div class="profile-pic" id="profile">
-    
-                </div>
-    
-                <div class="profile-data">
-                    <div class="name">
-                        <p><%= name %></p>
-                    </div>
-                    <div class="email">
-                        <p><%= email %></p>
-                    </div>
-                    <div class="articles">
-                        <p>Article completed : 0</p>
-                    </div>
-                    <div class="course">
-                        <p>Course completed : 0</p>
-                    </div>
-                </div>
-    
+            <div class="logo">
+                <img src="img/logo.svg">
+                <p>Learning Zone</p>
             </div>
+
+            <div class="content">
+                <div class="inner_box">
+
+                    <div class="profile-pic" id="profile">
+        
+                    </div>
+        
+                    <div class="profile-data">
+                        <div class="name">
+                            <p><%= name %></p>
+                        </div>
+                        <div class="email">
+                            <p><%= email %></p>
+                        </div>
+                        
+                        <div class="course">
+                            <p>Course completed : 0</p>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+           
     
     
             <div class="priority-set">
@@ -174,9 +149,12 @@
     </form>
        
     <div class="explore-button">
-        <button class="button3">
-            Explore
-        </button>
+        
+        
+            <form method="GET" action="/coursebook" class="but3">
+                <input type="submit" value="Explore">
+            </form>
+        
     </div>
 
 
@@ -203,10 +181,7 @@
                     dataType: "json", 
                     // data:data1, //expect html to be returned                
                     success: function(response){                    
-                        // $("#responsecontainer").html(response); 
-                        //alert(response);
-                       //let data=JSON.parse(response);
-                    //    let dd=response[1]
+                        
 
                         response.forEach(element => {
                             course_name.push(element.Course);
@@ -234,8 +209,12 @@
                             txt3.innerHTML = course_name[i];
                             info.appendChild(txt3);
                             box.appendChild(info);
-
-                            $("#cb").append(box);
+                            
+                            let a=document.createElement("a"); 
+                            a.setAttribute("href","/coursebook/"+course_name[i]);
+                            a.appendChild(box);
+                            
+                            $("#cb").append(a);
                             i++;
                         }
 
@@ -276,7 +255,7 @@
 
 
                             var txt3 = document.createElement("p");  // Create with DOM
-                            txt3.innerHTML = course_name[j];
+                            txt3.innerHTML = course_name1[j];
                             info.appendChild(txt3);
                             box.appendChild(info);
 

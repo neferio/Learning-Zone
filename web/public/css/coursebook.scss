@@ -1,0 +1,103 @@
+.logo{
+    width:fit-content;
+    position: absolute;
+    background-color:brown;
+    padding:15px 15px 28px 15px;
+    text-align: center;
+    margin-left:37px;
+    color:white;
+    img{
+        max-width:5em;
+        filter:drop-shadow(2px 4px 6px black);
+    }
+}
+//@import "coursebook-main";
+.header{
+   
+    padding:20px;
+    text-align: center;
+    h1{
+        color:white;
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 1px;
+    }
+}
+
+.section1{
+    margin-top:100px
+}
+.box2 {
+    display: flex;
+    justify-content: center;
+    height:auto;
+    flex-wrap: wrap;
+    //min-width: 300px;
+    a{
+        position: relative;
+            margin:5px;
+            width:32%;
+        .column{
+            height: 100%;
+
+            .p-box{
+                display: none;
+                position: absolute;
+                top:40%;
+                background-color: brown;
+                padding: 10px;
+    
+                left:60%;
+                p{
+                    
+                    //display: none;
+                    color:white;
+                    font-size:18px;
+                    font-style:bold;
+        
+                }
+    
+            }
+            
+            img{
+    
+                margin: 3px;
+                /* min-width: 300px; */
+                height:100%;
+                width: 100%;
+             transition:0.25s ease-out;
+            }
+    
+            
+        }
+        .column:hover{
+            img{
+            width: 50%;
+            filter:blur(2);
+            }
+            .p-box{
+                display: block;
+                
+            }
+    
+            
+        }
+    }
+    
+
+}
+  
+  /* Create four equal columns that sits next to each other */
+  
+  
+body{
+    background-image: url("../img/back1.jpg");
+
+}
+
+
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+

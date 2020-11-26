@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/coursebook.css">
+</head>
+<body>
+
+    <div class="logo">
+        <img src="img/logo.svg">
+        <p>Learning Zone</p>
+    </div>
+
+
+
+    <div class="header">
+        
+        <h1>Courses</h1>
+    </div>
+    <div class="section1">
+
+    </div>
+</body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function(){
+            
+            let course_name=new Array;
+            let imgname=new Array;
+            $.ajax({    //create an ajax request to display.php
+                    type: "GET",
+                    url: "/course-catalog",             
+                    dataType: "json", 
+                    // data:data1, //expect html to be returned                
+                    success: function(response){   
+                        console.log(response);                 
+                        // $("#responsecontainer").html(response); 
+                        //alert(response);
+                       //let data=JSON.parse(response);
+                    //    let dd=response[1]
+
+                        response.forEach(element => {
+                            course_name.push(element.Course);
+                            imgname.push(element.imgname);
+                        });
+
+                        let i=0;
+                        let j=0;
+                        let box=document.createElement("div");
+                        box.setAttribute("class","box2");
+                        while(i<course_name.length){
+                            let column=document.createElement("div");
+                            column.setAttribute("class","column");
+                            
+                            // let j=0;
+                            // while(j<3 && i<course_name.length ){
+                                
+                                let image=document.createElement("img");
+                                image.setAttribute("src","img/course/"+imgname[i]+".jpg");
+                                column.appendChild(image);
+
+                                let pbox=document.createElement("div");
+                                pbox.setAttribute("class","p-box");
+
+                                var txt3 = document.createElement("p");  // Create with DOM
+                                txt3.innerHTML = course_name[i];
+
+                                pbox.appendChild(txt3)
+
+                                column.appendChild(pbox)
+                                let a=document.createElement("a"); 
+                                a.setAttribute("href","/coursebook/"+course_name[i]);
+                                a.appendChild(column);
+                                //image.setAttribute("style","width:100%");
+                                box.appendChild(a);
+                               // j++;
+                                i++;
+
+                            //}
+                            //box.appendChild(column);
+                        }
+
+                        let xx=document.getElementsByClassName('section1')[0];
+
+                        xx.appendChild(box);
+                            
+                    //         let img_part=document.createElement("div");
+                    //         img_part.setAttribute("class","img-part");
+                    //         let image=document.createElement("img");
+                    //         image.setAttribute("src","img/course/"+imgname[i]+".jpg");
+                    //         img_part.appendChild(image);
+                    //         box.appendChild(img_part);
+
+
+                    //         let info=document.createElement("div");
+                    //         info.setAttribute("class","name");
+
+
+                    //         var txt3 = document.createElement("p");  // Create with DOM
+                    //         txt3.innerHTML = course_name[i];
+                    //         info.appendChild(txt3);
+                    //         box.appendChild(info);
+
+                    //         $("#cb").append(box);
+                    //         i++;
+                    //     }
+
+                    //     //console.log(response[0].Course);
+                        
+                    }
+
+                })
+
+            
+            
+
+         })
+
+         
+
+
+        </script>
+
+
+
+</html>

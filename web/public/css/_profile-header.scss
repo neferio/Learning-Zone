@@ -20,12 +20,31 @@
     .section1-box{
         display: flex;
         flex-direction: column;
+        background-color: #2b2a2a;
+        .logo{
+            width:fit-content;
+            position: absolute;
+            background-color:brown;
+            padding:15px 15px 28px 15px;
+            text-align: center;
+            margin-left:37px;
+            color:white;
+            img{
+                max-width:5em;
+                filter:drop-shadow(2px 4px 6px black);
+            }
+        }
+
+
+
         .inner_box{
-            height:400px;
-            background-color: #2b2a2a;
+            //height:400px;
+            background-color: darkslategray;
             display: flex;
-            justify-content: space-evenly;
-            padding: 75px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 53px 53px 0px 0px;
+            margin-top: 75px;
             .profile-pic{
                 img{
                     border-radius: 50%;
@@ -40,7 +59,7 @@
                 .name{
                     text-transform: capitalize;
                     color: white;
-                    font-weight: 600;
+                    font-weight: bold;
                     letter-spacing: 2px;
                     font-size: 35px;
                     margin-bottom: 15px;
@@ -48,7 +67,7 @@
                 }
                 .email{
                     color: white;
-                    font-weight: 500;
+                    font-weight: bold;
                     letter-spacing: 3px;
                     font-size: 25px;
                     margin-bottom: 25px;
@@ -104,7 +123,7 @@
     position: absolute;
     top:20px;
     right:110px;
-    button{
+    input{
         padding: 10px;
         width: 90px;
         letter-spacing: 1px;

@@ -1,0 +1,101 @@
+.logo {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  background-color: brown;
+  padding: 15px 15px 28px 15px;
+  text-align: center;
+  margin-left: 37px;
+  color: white;
+}
+
+.logo img {
+  max-width: 5em;
+  -webkit-filter: drop-shadow(2px 4px 6px black);
+          filter: drop-shadow(2px 4px 6px black);
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+.section1 {
+  margin-top: 100px;
+}
+
+.box2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.box2 a {
+  position: relative;
+  margin: 5px;
+  width: 32%;
+}
+
+.box2 a .column {
+  height: 100%;
+}
+
+.box2 a .column .p-box {
+  display: none;
+  position: absolute;
+  top: 40%;
+  background-color: brown;
+  padding: 10px;
+  left: 60%;
+}
+
+.box2 a .column .p-box p {
+  color: white;
+  font-size: 18px;
+  font-style: bold;
+}
+
+.box2 a .column img {
+  margin: 3px;
+  /* min-width: 300px; */
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
+}
+
+.box2 a .column:hover img {
+  width: 50%;
+  -webkit-filter: blur(2);
+          filter: blur(2);
+}
+
+.box2 a .column:hover .p-box {
+  display: block;
+}
+
+/* Create four equal columns that sits next to each other */
+body {
+  background-image: url("../img/back1.jpg");
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=coursebook.css.map */

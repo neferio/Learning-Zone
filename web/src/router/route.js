@@ -8,19 +8,24 @@ var flash = require('connect-flash');
 router.use(flash());
 var session = require('express-session');
 
-router.use(session({ cookie: { maxAge: 60000 }, 
+
+
+
+
+router.use(session({ cookie: { maxAge: 60000000 }, 
     secret: 'woot',
-    resave: false, 
-    saveUninitialized: false}));
+    resave: true, 
+    "saveUninitialized": true,
+  }));
 // const student = require("../model/command");
 
 const sql = require("../db/database");
 
 //end points
 router.get('/profile',(req,res)=>{
-    console.log("hyq1")
+    //console.log("hyq1")
     if(req.query.search==0){
-        console.log("hyq2");
+        //console.log("hyq2");
         let nameq=req.session.name;
         let emailq=req.session.email;
         
@@ -71,7 +76,7 @@ router.post('/signup',(req,res)=>{
                 // if any error while executing above query, throw error
                 if (err) throw err;
                 // if there is no error, you have the result
-                console.log(result);
+                //console.log(result);
                 
                   
                 
@@ -143,7 +148,7 @@ router.get("/ajax",(req,res)=>{
     //console.log(req._parsedUrl.query);
     //res.send("hey");
     let rec=[[req._parsedUrl.query]]
-    console.log(rec);
+    //console.log(rec);
     if(req._parsedUrl.query==null){
         console.log("hey")
         res.send(" ");
@@ -200,6 +205,8 @@ router.post("/priority",(req,res)=>{
 
 
 router.get("/recommend",(req,res)=>{
+    console.log(req.session.name)
+
     let sql11="SELECT * FROM VALID WHERE name='"+req.session.name+"'"
     let arr=new Array;
     sql.query(sql11, function (err, result) {
@@ -238,17 +245,9 @@ router.get("/recommend",(req,res)=>{
 
 
 router.get("/enrol",(req,res)=>{
-    // let sql11="SELECT * FROM VALID WHERE name='"+req.session.name+"'"
-    // let arr=new Array;
-    // sql.query(sql11, function (err, result) {
-    //     if (err) throw err;
-    //     // console.log(result[0]);
-    //     // arr.push(result[0].name)
-    //     // arr.push(result[0].pone)
-    //     let tag1=result[0].pone;
-    //     let tag2=result[0].ptwo;
+        console.log(req.session.name)
         let arr2=new Array;
-        let sql22="SELECT * FROM `course-student` WHERE student='"+req.session.name+"'";
+        let sql22="SELECT * FROM `course-student` WHERE student='"+req.session.name+"' AND status=0";
         sql.query(sql22, function (err, result2) {
             if (err) throw err;
             // arr.push(result2[0])
@@ -259,7 +258,7 @@ router.get("/enrol",(req,res)=>{
                 arr2.push(element);
 
             });
-            console.log(arr2);
+            //console.log(arr2);
             arr2 = JSON.stringify(arr2);
             res.send(arr2);
         })
@@ -272,5 +271,109 @@ router.get("/enrol",(req,res)=>{
     // });
 })
 
+
+
+router.get("/coursebook",(req,res)=>{
+    res.render('coursebook')
+})
+
+
+router.get("/course-catalog",(req,res)=>{
+        let arr3=new Array;
+        let sql22="SELECT * FROM `course-tags` "
+        sql.query(sql22, function (err, result2) {
+            if (err) throw err;
+            // arr.push(result2[0])
+            // var result2 = JSON.stringify(result2);
+            // console.log(result2);
+
+            result2.forEach(element => {
+                arr3.push(element);
+
+            });
+            //console.log(arr3);
+            arr3 = JSON.stringify(arr3);
+            res.send(arr3);
+        })
+
+
+})
+
+
+
+router.get("/coursebook/:cname",(req,res)=>{
+    console.log(req.session.name)
+    let cname11=req.params.cname;
+    let sql22="SELECT * FROM `course-data` WHERE course='"+req.params.cname+"'"
+        sql.query(sql22, function (err, result2) {
+            if (err) throw err;
+            res.render('course',{
+                cname:result2[0].course,
+                data:result2[0].data,
+                author:result2[0].author
+            })
+        })
+
+   // res.send("hey");
+})
+
+
+
+
+router.get("/enrol-check",(req,res)=>{
+   
+    console.log(req.query.course);
+    console.log(req.session.name);
+
+     let arr3=new Array;
+    let sql22="SELECT * FROM `course-student` WHERE student='"+req.session.name+"' AND course='"+req.query.course+"'"
+    sql.query(sql22, function (err, result2) {
+        if (err) throw err;
+        
+        if(result2.length==0){
+            res.send("-1");
+        }
+        else{
+        xy=""+result2[0].status
+        //console.log(xy)
+        res.send(xy)
+        }
+    })
+
+
+
+
+
+})
+
+
+
+router.get("/enrol-now",(req,res)=>{
+
+    let sql12="SELECT imgname FROM `course-tags` WHERE course='"+req.query.course+"'"
+    sql.query(sql12, function (err, result1) {
+        if (err) throw err;
+        
+        ;
+        
+       let xy=result1[0].imgname;
+
+       var sql22 = "INSERT INTO `course-student` (course, student,status,imgname) VALUES ('"+req.query.course+"','"+   req.session.name +"',0,'"+xy+"')"
+    
+        sql.query(sql22, function (err, result2) {
+            if (err) throw err;
+            
+            ;
+            
+        // xy=""+result2[0].status
+           // console.log(result2)
+            res.send("yes")
+        })
+    })
+
+
+
+    
+})
 
 module.exports=router;

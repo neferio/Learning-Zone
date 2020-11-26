@@ -23,18 +23,39 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: #2b2a2a;
+}
+
+.section1 .section1-box .logo {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  background-color: brown;
+  padding: 15px 15px 28px 15px;
+  text-align: center;
+  margin-left: 37px;
+  color: white;
+}
+
+.section1 .section1-box .logo img {
+  max-width: 5em;
+  -webkit-filter: drop-shadow(2px 4px 6px black);
+          filter: drop-shadow(2px 4px 6px black);
 }
 
 .section1 .section1-box .inner_box {
-  height: 400px;
-  background-color: #2b2a2a;
+  background-color: darkslategray;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  padding: 75px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 53px 53px 0px 0px;
+  margin-top: 75px;
 }
 
 .section1 .section1-box .inner_box .profile-pic img {
@@ -50,7 +71,7 @@
 .section1 .section1-box .inner_box .profile-data .name {
   text-transform: capitalize;
   color: white;
-  font-weight: 600;
+  font-weight: bold;
   letter-spacing: 2px;
   font-size: 35px;
   margin-bottom: 15px;
@@ -59,7 +80,7 @@
 
 .section1 .section1-box .inner_box .profile-data .email {
   color: white;
-  font-weight: 500;
+  font-weight: bold;
   letter-spacing: 3px;
   font-size: 25px;
   margin-bottom: 25px;
@@ -114,7 +135,7 @@
   right: 110px;
 }
 
-.explore-button button {
+.explore-button input {
   padding: 10px;
   width: 90px;
   letter-spacing: 1px;
