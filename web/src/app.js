@@ -1,7 +1,7 @@
 const express=require('express')
 const path=require('path')
 
-const port=process.env.PORT || 4000
+const port=process.env.PORT || 3000
 
 const htmlpath=path.join(__dirname,'../public')
 
@@ -15,11 +15,11 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(htmlpath))
-app.set("view engine", "ejs");
+//app.set("view engine", "ejs");
 
+//app.set('views', '../views');
+app.set('view engine', 'ejs');
 
-
-app.set('views', './web/views');
 app.get('/',(req,res)=>{
     res.render("index");
 })
