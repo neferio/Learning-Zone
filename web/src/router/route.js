@@ -344,8 +344,9 @@ router.get("/coursebook/:cname",(req,res)=>{
     let cname11=req.params.cname;
     let sql22="SELECT * FROM `course-data` WHERE course='"+req.params.cname+"'"
         sql.query(sql22, function (err, result2) {
-            if (err) throw err;
-            res.render('course',{
+            if (err) 
+                throw err;
+                res.render('course',{
                 cname:result2[0].course,
                 data:result2[0].data,
                 author:result2[0].author,
