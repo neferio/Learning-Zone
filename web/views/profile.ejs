@@ -36,7 +36,7 @@
                         </div>
                         
                         <div class="course">
-                            <p>Course completed : 0</p>
+                            <p>Course completed :<p id="cc"></p></p>
                         </div>
                     </div>
         
@@ -130,6 +130,27 @@
             </div>
 
             <div class="course-box" id="cb2">
+                <!-- <div class="box2">
+                    <div class="image-part">
+
+                    </div>
+                    <div class="name" id="rec-part">
+                        <h2>data</h2>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section4">
+        <div class="section4-box">
+            <div class="heading">
+                <h3>Completed Courses</h3>
+            </div>
+
+            <div class="course-box" id="cb3">
                 <!-- <div class="box2">
                     <div class="image-part">
 
@@ -259,16 +280,77 @@
                             info.appendChild(txt3);
                             box.appendChild(info);
 
-                            $("#cb2").append(box);
+                            let a=document.createElement("a"); 
+                            a.setAttribute("href","/coursebook/"+course_name1[j]);
+                            a.appendChild(box);
+
+
+
+                            $("#cb2").append(a);
                             j++;
                         }
                     
                 }
             })
 
+            $.ajax({    //create an ajax request to display.php
+                type: "GET",
+                url: "/completed",             
+                dataType: "json",
 
+                success: function(res){
+                    let course_name1=new Array;
+                    let imgname1=new Array;
+                    console.log(res)
+                    res.forEach(element => {
+                            course_name1.push(element.course);
+                            imgname1.push(element.imgname);
+                    });
+                    let j=0;
+                    while(j<course_name1.length){
+
+                            let box=document.createElement("div");
+                            box.setAttribute("class","box2");
+                            let img_part=document.createElement("div");
+                            img_part.setAttribute("class","img-part");
+                            let image=document.createElement("img");
+                            image.setAttribute("src","img/course/"+imgname1[j]+".jpg");
+                            img_part.appendChild(image);
+                            box.appendChild(img_part);
+
+
+                            let info=document.createElement("div");
+                            info.setAttribute("class","name");
+
+
+                            var txt3 = document.createElement("p");  // Create with DOM
+                            txt3.innerHTML = course_name1[j];
+                            info.appendChild(txt3);
+                            box.appendChild(info);
+
+                            let a=document.createElement("a"); 
+                            a.setAttribute("href","/coursebook/"+course_name1[j]);
+                            a.appendChild(box);
+
+
+
+                            $("#cb3").append(a);
+                            j++;
+                        }
+                    
+                }
+            })
             
+            $.ajax({    //create an ajax request to display.php
+                type: "GET",
+                url: "/count",             
+                dataType: "json",
 
+                success: function(res){
+                
+                    document.getElementById('cc').innerText=res[0]["COUNT(course)"]
+                }
+            })
          })
 
          $(".button1").on("click", function(){

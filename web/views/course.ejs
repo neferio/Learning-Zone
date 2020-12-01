@@ -28,6 +28,26 @@
     <div class="status" id="b3">
         
     </div>
+
+
+
+    <div class="certificate" id="certi1">
+        <div class="heading">
+            <h1>
+                certificate of Course Completion
+            </h1>
+        </div>
+
+        <div class="certi">
+            We would like to congratulate <b><%= p_name %></b>, on the successful completion of this course <b><%= cname %></b>, held at <b>Learning-zone</b>.
+            During this Course he has actively participated in the assigned tasks with his researching and improvisational attitude. The targets were completed efficiently and before time.
+            He was sincere, thoroughly involved and demonstrated professional temperament. He also coordinated well with the seniors and the fellow interns. We found him to have good technical skills and the characteristics of a good team player.
+            We wish him all the best for his future endeavors.<br>
+
+           <b>Technical Manager</b> <br>
+            <b>Learning-zone</b>
+        </div>
+    </div>
     
 </body>
 
@@ -62,15 +82,24 @@
                else if(response==0){
 
                     let txt=document.createElement('p');
+                    txt.setAttribute("id","p1")
                     txt.innerText="Enrolled"
-
+                    
 
                     let but=document.createElement('button');
                     
                     but.innerText="Mark as done"
                     but.setAttribute("id","mark")
+                    but.setAttribute("onClick","myfunc2()");
                     document.getElementById("b3").appendChild(txt);
                     document.getElementById("b3").appendChild(but);
+               }
+               else{
+                    let txt=document.createElement('p');
+                    txt.setAttribute("id","p1")
+                    txt.innerText="Done"
+                    document.getElementById("b3").appendChild(txt);
+                    document.getElementById("certi1").style.display="block";
                }
 
                 //console.log(response[0].Course);
@@ -103,6 +132,7 @@
                     var list = document.getElementById("enroll")
                     list.remove();
                     let txt=document.createElement('p');
+                    txt.setAttribute("id","p1")
                     txt.innerText="Enrolled"
 
 
@@ -110,8 +140,35 @@
                     
                     but.innerText="Mark as done"
                     but.setAttribute("id","mark")
+                    but.setAttribute("onClick","myfunc2()");
                     document.getElementById("b3").appendChild(txt);
                     document.getElementById("b3").appendChild(but);
+                }
+            }
+        })
+    }
+
+
+    var myfunc2=()=>{
+        $.ajax({    //create an ajax request to display.php
+            type: "GET",
+            url: "/done?course="+data1,             
+            dataType: "text", 
+            //data:data1, //expect html to be returned                
+            success: function(response){ 
+                if(response=="yes"){
+                    var list = document.getElementById("mark")
+                    list.remove();
+                    var p = document.getElementById("p1")
+                    p.innerText="Done"
+                    document.getElementById("certi1").style.display="block";
+                    // let but=document.createElement('button');
+                    
+                    // but.innerText="Mark as done"
+                    // but.setAttribute("id","mark")
+                    // but.setAttribute("onClick","myfunc2()");
+                    // document.getElementById("b3").appendChild(txt);
+                    // document.getElementById("b3").appendChild(but);
                 }
             }
         })

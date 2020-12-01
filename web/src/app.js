@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(htmlpath))
 //app.set("view engine", "ejs");
 
-//app.set('views', '../views');
+app.set('views', 'web/views');
 app.set('view engine', 'ejs');
 
 app.get('/',(req,res)=>{
@@ -67,5 +67,6 @@ app.get('/login',(req,res)=>{
 
 
 app.listen(port,()=>{
+    console.log(__dirname)
     console.log('server is running on',port)
 })

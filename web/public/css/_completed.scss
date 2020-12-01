@@ -1,7 +1,7 @@
-.section3{
+.section4{
     padding:10px;
-    background-color: #2b2a2a;
-    .section3-box{
+    background-color: white;
+    .section4-box{
         padding:5px;
         .heading{
             text-align: center;
@@ -10,14 +10,14 @@
             font-size: 20px;
         
             h3{
-                color:white;
+                color:#2b2a2a;
                 letter-spacing: 1px;
                 font-family: Arial, Helvetica, sans-serif;
 
             }
         }
 
-        #cb2{
+        #cb3{
             display:flex;
             justify-content: space-evenly;
             flex-wrap: wrap;
@@ -47,7 +47,7 @@
                         padding: 10px;
                         text-align: center;
                         font-size: 18px;
-                        color:white;
+                        color:#2b2a2a;
                         letter-spacing: 1px;
                         font-family: Arial, Helvetica, sans-serif;
                     }
