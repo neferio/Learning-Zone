@@ -129,7 +129,18 @@ describe('Testing of endpoints', () => {
         expect(res.redirect).toBe(true);
         expect(res.header.location).toBe('/profile?search=0');
         done();
-      })   
+      })  
+      
+      it("Should be able to enrol to a new course", async done => {
+        const res = await request.get("/enrol-check").send({
+            query: {
+              course: "fire-DL"
+            }
+        });
+        expect(res.status).toBe(200);
+        done();
+      }) 
+      
 
       it("Get enrolled courses", async done => {
           const res = await request.get("/enrol");
@@ -158,6 +169,22 @@ describe('Testing of endpoints', () => {
     res = await request.get(`/coursebook/${cname2}`);
     expect(res.status).toBe(200);
     done();
+})
+
+it("Should be able to mark a course as completed", async done => {
+  const res = await request.get("/done").send({
+    query: {
+      course: "fire-DL"
+    }
+});
+  expect(res.status).toBe(200);
+  done();
+})
+
+it("Fetch completed courses of a user", async done => {
+  const res = await request.get("/completed");
+  expect(res.status).toBe(200);
+  done();
 })
 
 })
