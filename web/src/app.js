@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(htmlpath))
 //app.set("view engine", "ejs");
 
-app.set('views', 'web/views');
+//app.set('views', 'web/views');
 app.set('view engine', 'ejs');
 
 app.get('/',(req,res)=>{

@@ -24,7 +24,7 @@
 }
 
 .section1{
-    margin-top:100px
+    margin-top:60px
 }
 .box2 {
     display: flex;
@@ -101,3 +101,27 @@ body{
     box-sizing: border-box;
 }
 
+
+
+.bar{
+    display: flex;
+    justify-content: center;
+    .box{
+        padding: 10px;
+        form{
+            input{
+                width: 300px;
+                height: 30px;
+                border-radius: 8px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            button{
+                margin-top: 20px;
+                margin-left: 38%;
+                padding: 8px 12px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+        }
+    }
+}

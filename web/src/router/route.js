@@ -346,12 +346,20 @@ router.get("/coursebook/:cname",(req,res)=>{
         sql.query(sql22, function (err, result2) {
             if (err) 
                 throw err;
-                res.render('course',{
+
+            if(result2.length==0){
+                res.render("notfound");
+            }
+            else{
+            res.render('course',
+            {
+
                 cname:result2[0].course,
                 data:result2[0].data,
                 author:result2[0].author,
                 p_name:req.session.name
             })
+            }
         })
 
    // res.send("hey");

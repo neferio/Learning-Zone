@@ -19,6 +19,17 @@
         
         <h1>Courses</h1>
     </div>
+
+    <div class="bar">
+        <div class="box">
+            <form method="GET" id="f1">
+                <input type="text" class="query" name="query" id="in"><br>
+                <button id="main_but" onclick="ff()">Find</button>
+            </form>
+        </div>
+    </div>
+
+
     <div class="section1">
 
     </div>
@@ -119,6 +130,13 @@
          })
 
          
+
+         function ff(){
+            let x=document.getElementById('in').value;
+            let url="/coursebook/"+x;
+
+             document.getElementById('f1').setAttribute("action",url);
+         }
 
 
         </script>
