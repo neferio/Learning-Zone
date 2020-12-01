@@ -5,23 +5,7 @@ const mysql = require('mysql');
 
 
 beforeAll(() => {
-    //console.log(process.env)
     process.env.NODE_ENV = 'test'
-    // console.log(process.env.NODE_ENV)
-    // console.log(process.env.PORT)
-    // const connection = mysql.createConnection({
-    //     host: 'localhost',
-    //     user: 'root',
-    //     password: '',
-    //     database: 'testDB',
-    //     port: 3306
-    // });
-
-    // connection.connect(err => {
-    //     if(err)
-    //         throw err;
-    //     console.log('Connected to test database...')
-    // })
 })
 
 describe('Dummy Tests', () => {
@@ -36,10 +20,9 @@ describe('Dummy Tests', () => {
     })
 })
 
-describe('Testing database endpoints', () => {
+describe('Testing of endpoints', () => {
     it('Get profile endpoint', async done => {
         const res = await request.get("/profile");
-        //console.log(res);
         expect(res.status).toBe(200);
         done();
     })
@@ -50,6 +33,8 @@ describe('Testing database endpoints', () => {
           email: "test@gmail.com",
           password: "test1234"  
         });
+        expect(res.redirect).toBeTruthy();
+        expect(res.header.location).toBe("/signup")
         done();
       });
 
@@ -73,12 +58,24 @@ describe('Testing database endpoints', () => {
           done();
       })
 
+      it("Should show if username is available while signup", async done => {
+        let res = await request.get("/ajax").send({
+          username: "test" 
+        });
+        expect(res.status).toBe(200);
+
+        res = await request.get("/ajax").send({
+          username: "test1234" 
+        });
+        expect(res.ok).toBeTruthy()
+        done();
+      })
+
       it("Should login an existing user", async done => {
         const res = await request.post("/login").send({
             name: "pooja",
             password: "pooja"  
           });
-          //console.log(res)
           expect(res.error).toBe(false);
           expect(res.redirect).toBe(true);
           expect(res.header.location).toBe('/profile')
@@ -90,7 +87,6 @@ describe('Testing database endpoints', () => {
             name: "pooja",
             password: "pooja1234"  
           }); 
-          //console.log(res)
           expect(res.ok).toBe(false);
           expect(res.redirect).toBe(true);
           expect(res.header.location).toBe('/login?valid=0');
@@ -102,7 +98,6 @@ describe('Testing database endpoints', () => {
             name: "pooja1234",
             password: "pooja"  
           }); 
-          //console.log(res)
           expect(res.ok).toBe(false);
           expect(res.redirect).toBe(true);
           expect(res.header.location).toBe('/login?valid=0');
@@ -120,7 +115,6 @@ describe('Testing database endpoints', () => {
           const res = await request.post("/priority").send({
               topic: ['Android', 'Web-App']
           });
-          //console.log(res);
           expect(res.affectedRows === 0).toBeFalsy();
           expect(res.redirect).toBe(true);
           expect(res.header.location).toBe('/profile');
@@ -131,12 +125,11 @@ describe('Testing database endpoints', () => {
         const res = await request.post("/priority").send({
             topic: ['Android']
         });
-        //console.log(res);
         expect(res.status).toBe(302);
         expect(res.redirect).toBe(true);
         expect(res.header.location).toBe('/profile?search=0');
         done();
-      })
+      })   
 
       it("Get enrolled courses", async done => {
           const res = await request.get("/enrol");
@@ -144,6 +137,29 @@ describe('Testing database endpoints', () => {
           done();
       })
 
+      it("Get coursebook", async done => {
+        const res = await request.get("/coursebook");
+        expect(res.status).toBe(200);
+        done();
+    })
       
+    it("Get course catalog", async done => {
+      const res = await request.get("/coursebook");
+      expect(res.status).toBe(200);
+      done();
+  })
+
+  it("Fetch course data from course name", async done => {
+    const cname1 = "RNN"
+    const cname2 = "finance-core"
+    let res = await request.get(`/coursebook/${cname1}`);
+    expect(res.status).toBe(200);
+
+    res = await request.get(`/coursebook/${cname2}`);
+    expect(res.status).toBe(200);
+    done();
 })
+
+})
+
 

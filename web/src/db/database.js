@@ -5,7 +5,7 @@ const db_Config = require("../config/db-config.js");
 
 const conn = mysql.createConnection({
   host: 'db',
-  user: 'root',
+  user: 'mysql',
   password: '1234',
   // host: 'localhost',
   // user: 'root',
