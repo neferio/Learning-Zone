@@ -56,11 +56,16 @@
             justify-content: center;
 
             button{
+
                 padding: 10px;
                 width: 150px;
-                color: white;
-                letter-spacing: 1px;
+                
                 background: #2d2b2f;
+                a{
+                    color: white;
+                letter-spacing: 1px;
+                    text-decoration: none;
+                }
             }
         }
     }
