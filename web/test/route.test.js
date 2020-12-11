@@ -21,12 +21,14 @@ describe('Dummy Tests', () => {
 })
 
 describe('Testing of endpoints', () => {
+
     it('Get profile endpoint', async done => {
         const res = await request.get("/profile");
         expect(res.status).toBe(200);
         done();
     })
 
+    //Sign up test cases
     it("Should save new user to database", async done => {
         const res = await request.post("/signup").send({
           username: "testusername",
