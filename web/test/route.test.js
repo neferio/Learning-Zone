@@ -71,6 +71,7 @@ describe('Testing of endpoints', () => {
         done();
       })
 
+      //Test cases for login  
       it("Should login an existing user", async done => {
         const res = await request.post("/login").send({
             name: "pooja",
